@@ -7,3 +7,19 @@
   50% { opacity: 0.5; filter: blur(5px); }
   100% { opacity: 0; filter: blur(15px); }
 }
+.portal-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #00d4ff, #0077ff);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.portal-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00d4ff;
+}
