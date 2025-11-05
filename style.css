@@ -1,0 +1,9 @@
+.portal-transition {
+  animation: warp 1.2s ease-in-out forwards;
+}
+
+@keyframes warp {
+  0% { opacity: 1; filter: blur(0); }
+  50% { opacity: 0.5; filter: blur(5px); }
+  100% { opacity: 0; filter: blur(15px); }
+}
