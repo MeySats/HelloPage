@@ -1,0 +1,10 @@
+<button id="enterButton">Вход в цифровой портал</button>
+
+<script>
+document.getElementById("enterButton").addEventListener("click", () => {
+  document.body.classList.add("portal-transition");
+  setTimeout(() => {
+    window.location.href = "portal.html";
+  }, 1200); // 1.2 секунды эффект перехода
+});
+</script>
