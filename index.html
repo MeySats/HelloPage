@@ -2,52 +2,65 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Привет от Вероны 🌿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Цифровой Портал</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #f0f9ff, #cbebff);
-      color: #222;
-      text-align: center;
       margin: 0;
-      padding: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #0a0a0a 0%, #000 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: #00e0ff;
+      font-family: "Segoe UI", sans-serif;
+      text-align: center;
     }
-    .container {
-      margin-top: 15%;
+    .portal {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,255,0.3) 0%, rgba(0,0,0,0) 70%);
+      box-shadow: 0 0 50px rgba(0,255,255,0.6), inset 0 0 30px rgba(0,255,255,0.3);
+      animation: pulse 4s infinite ease-in-out;
+    }
+    .portal::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      box-shadow: 0 0 60px rgba(0,255,255,0.8);
+      animation: rotate 8s linear infinite;
     }
     h1 {
-      font-size: 2.5em;
+      position: absolute;
+      font-size: 1.8em;
+      letter-spacing: 2px;
+      color: #00ffff;
+      text-shadow: 0 0 15px #00ffff;
+      animation: fadeIn 3s ease-in-out;
     }
-    p {
-      font-size: 1.2em;
-      color: #555;
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
     }
-    .links a {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      background: #0078d7;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: 0.2s;
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
-    .links a:hover {
-      background: #005fa3;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Привет, я Верона 👋</h1>
-    <p>Это мой первый мини-сайт на GitHub Pages.<br>
-       Здесь я учусь создавать и развивать свои проекты.</p>
-    <div class="links">
-      <a href="https://github.com" target="_blank">GitHub</a>
-      <a href="https://www.pinterest.com" target="_blank">Pinterest</a>
-      <a href="https://www.instagram.com" target="_blank">Instagram</a>
-    </div>
-  </div>
+  <div class="portal"></div>
+  <h1>Вход в Цифровой Портал</h1>
 </body>
 </html>
