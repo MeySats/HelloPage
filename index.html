@@ -17,7 +17,22 @@
       font-family: "Segoe UI", sans-serif;
       text-align: center;
     }
+    .portal, .content {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    /* Стиль первого экрана (портал) */
     .portal {
+      background: radial-gradient(circle at center, #000 0%, #020d10 70%);
+      z-index: 1;
+    }
+    .circle {
       position: relative;
       width: 300px;
       height: 300px;
@@ -26,25 +41,79 @@
       box-shadow: 0 0 50px rgba(0,255,255,0.6), inset 0 0 30px rgba(0,255,255,0.3);
       animation: pulse 4s infinite ease-in-out;
     }
-    .portal::before {
+    .circle::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       border-radius: 50%;
       box-shadow: 0 0 60px rgba(0,255,255,0.8);
       animation: rotate 8s linear infinite;
     }
     h1 {
-      position: absolute;
+      margin-top: 40px;
       font-size: 1.8em;
       letter-spacing: 2px;
       color: #00ffff;
       text-shadow: 0 0 15px #00ffff;
       animation: fadeIn 3s ease-in-out;
     }
+    button {
+      margin-top: 40px;
+      padding: 12px 30px;
+      font-size: 1em;
+      color: #00ffff;
+      background: transparent;
+      border: 2px solid #00ffff;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+    button:hover {
+      background: #00ffff;
+      color: #000;
+      box-shadow: 0 0 15px #00ffff;
+    }
+
+    /* Второй экран (приветствие и разделы) */
+    .content {
+      opacity: 0;
+      z-index: 0;
+      flex-direction: column;
+    }
+    .content.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    .content h2 {
+      font-size: 2em;
+      color: #00ffff;
+      text-shadow: 0 0 20px #00ffff;
+      animation: fadeIn 1.5s ease;
+    }
+    .menu {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .menu a {
+      color: #00eaff;
+      border: 1px solid #00eaff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .menu a:hover {
+      background: #00eaff;
+      color: #000;
+      box-shadow: 0 0 10px #00eaff;
+    }
+
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 0.8; }
       50% { transform: scale(1.1); opacity: 1; }
@@ -60,7 +129,26 @@
   </style>
 </head>
 <body>
-  <div class="portal"></div>
-  <h1>Вход в Цифровой Портал</h1>
-</body>
-</html>
+  <!-- Первый экран -->
+  <div class="portal" id="portal">
+    <div class="circle"></div>
+    <h1>Цифровой Портал</h1>
+    <button id="enter">Вход в цифровой портал</button>
+  </div>
+
+  <!-- Второй экран -->
+  <div class="content" id="content">
+    <h2>Добро пожаловать, Путник 🌌</h2>
+    <div class="menu">
+      <a href="#">Информация</a>
+      <a href="#">Видение</a>
+      <a href="#">Истина</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('enter').addEventListener('click', () => {
+      const portal = document.getElementById('portal');
+      const content = document.getElementById('content');
+      portal.style.opacity = '0';
+      setTimeou
